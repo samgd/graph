@@ -1,4 +1,4 @@
-import           Data.Graph         (components)
+import           Data.Graph         (components, outdegree)
 import qualified Graph.Parse
 import           System.Environment (getArgs, getProgName)
 
@@ -10,5 +10,7 @@ main = do
     Nothing    -> do
       prog <- getProgName
       putStrLn $ prog ++ ": failed to parse data file"
-    Just graph -> print $ length $ components graph
+    Just graph -> do
+      print $ length $ components graph
+      print $ outdegree graph
 

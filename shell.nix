@@ -4,8 +4,8 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, containers, directory, parsec
-      , parsec-utils, stdenv
+  f = { mkDerivation, base, containers, directory, doctest, parsec
+      , parsec-utils, QuickCheck, stdenv
       }:
       mkDerivation {
         pname = "graph";
@@ -17,6 +17,7 @@ let
           base containers directory parsec parsec-utils
         ];
         executableHaskellDepends = [ base ];
+        testHaskellDepends = [ base doctest QuickCheck ];
         license = stdenv.lib.licenses.unfree;
       };
 
